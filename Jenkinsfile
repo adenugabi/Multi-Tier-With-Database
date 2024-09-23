@@ -64,6 +64,7 @@ pipeline {
             steps {
                 withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'project-cluster', contextName: '', credentialsId: 'k8s-credential', namespace: 'webapps', serverUrl: 'https://E73F31947340FAC745FFBB2BD5444725.gr7.eu-west-2.eks.amazonaws.com']]) {
                     sh "kubectl apply -f deployment.yaml"
+                    sleep(30)
                 }
             }
         }
