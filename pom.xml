@@ -83,11 +83,11 @@
 		<distributionManagement>
         <repository>
             <id>maven-releases</id>
-            <url>http://18.134.14.44:8081/repository/repo-release/</url>
+            <url>http://18.134.96.64:8081/repository/bankapp-release/</url>
         </repository>
         <snapshotRepository>
             <id>maven-snapshots</id>
-            <url>http://18.134.14.44:8081/repository/repo-snapshot/</url>
+            <url>http://18.134.96.64:8081/repository/bankapp-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 
