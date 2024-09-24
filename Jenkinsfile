@@ -93,11 +93,14 @@ pipeline {
                         def kubectlOutput = sh(script: 'kubectl get svc -n webapps', returnStdout: true).trim()
                         
                         emailext(
-                            body: """Well done! Your deployment was successful.
+                            body: """Your deployment was successful.
 
                             Here is the current status of services in the webapps namespace:
 
                             ${kubectlOutput}
+
+                            Regards,
+                            Abisola Adenuga
                             """,
                             subject: 'Deployment Successful',
                             to: 'ajisegbedeabisolat@gmail.com'
