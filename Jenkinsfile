@@ -77,9 +77,21 @@ pipeline {
             }
         }
         stage('11. Email notification') {
-            steps {
-                emailext body: 'Welldone!!! your deployment was successful', subject: 'Deployment Successful', to: 'ajisegbedeabisolat@gmail.com'
-            }
+    steps {
+        script {
+            def kubectlOutput = sh(script: 'kubectl get svc -n webapps', returnStdout: true).trim()
+
+
+            emailext(
+                body: """Welldone!!! your deployment was successful
+
+                Here is the current status of services in the webapps namespace:
+
+                ${kubectlOutput}
+                """,
+                subject: 'Deployment Successful',
+                to: 'ajisegbedeabisolat@gmail.com'
+            )
         }
     }
 }
