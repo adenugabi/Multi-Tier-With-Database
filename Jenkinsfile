@@ -100,7 +100,7 @@ pipeline {
                             ${kubectlOutput}
 
                             Regards,
-                            Abisola Adenuga
+                            Abisola Tracy Adenuga
                             """,
                             subject: 'Deployment Successful',
                             to: 'ajisegbedeabisolat@gmail.com'
