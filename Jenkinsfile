@@ -79,21 +79,23 @@ pipeline {
         stage('11. Email notification') {
     steps {
         script {
-            def kubectlOutput = sh(script: 'kubectl get svc -n webapps', returnStdout: true).trim()
+            withKubeCredentials(kubectlCredentials: [[
+                credentialsId: 'k8s-credential',
+                serverUrl: 'https://E73F31947340FAC745FFBB2BD5444725.gr7.eu-west-2.eks.amazonaws.com',
+                namespace: 'webapps'
+            ]]) {
+                def kubectlOutput = sh(script: 'kubectl get svc -n webapps', returnStdout: true).trim()
 
+                emailext(
+                    body: """Well done! Your deployment was successful.
 
-            emailext(
-                body: """Welldone!!! your deployment was successful
+                    Here is the current status of services in the webapps namespace:
 
-                Here is the current status of services in the webapps namespace:
-
-                
-                ${kubectlOutput}
-                        """,
-                        subject: 'Deployment Successful',
-                        to: 'ajisegbedeabisolat@gmail.com'
-                    )
-                }
+                    ${kubectlOutput}
+                    """,
+                    subject: 'Deployment Successful',
+                    to: 'ajisegbedeabisolat@gmail.com'
+                )
             }
         }
     }
