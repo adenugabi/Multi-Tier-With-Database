@@ -96,8 +96,8 @@ pipeline {
                     subject: 'Deployment Successful',
                     to: 'ajisegbedeabisolat@gmail.com'
                 )
+                }
             }
-        }
+         }
     }
 }
-    }
