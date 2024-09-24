@@ -87,12 +87,14 @@ pipeline {
 
                 Here is the current status of services in the webapps namespace:
 
+                
                 ${kubectlOutput}
-                """,
-                subject: 'Deployment Successful',
-                to: 'ajisegbedeabisolat@gmail.com'
-            )
+                        """,
+                        subject: 'Deployment Successful',
+                        to: 'ajisegbedeabisolat@gmail.com'
+                    )
+                }
+            }
         }
     }
 }
- }
